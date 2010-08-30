@@ -2,11 +2,11 @@
 
 import deluge
 import network
-from notifier import Notifier
+import notifier
 
 def notify_if_deluge_needs_halting():
     if deluge.is_running() and network.is_dangerous():
-        Notifier().notify()
+        notifier.warn_about_deluge()
 
 if __name__ == "__main__":
     notify_if_deluge_needs_halting()

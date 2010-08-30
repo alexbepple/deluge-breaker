@@ -3,20 +3,18 @@
 import pygtk
 import gtk
 
-class Notifier:
+def warn_about_deluge():
+    dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK)
+    dialog.set_title("Deluge Breaker")
+    dialog.set_markup("Beware the deluge!")
 
-    def notify(self):
-        dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK)
-        dialog.set_title("Deluge Breaker")
-        dialog.set_markup("Beware the deluge!")
+    theme = gtk.icon_theme_get_default()
+    icon = theme.load_icon("deluge", 16, 0)
+    dialog.set_icon(icon)
 
-        theme = gtk.icon_theme_get_default()
-        icon = theme.load_icon("deluge", 16, 0)
-        dialog.set_icon(icon)
-
-        dialog.run()
-        dialog.destroy()
+    dialog.run()
+    dialog.destroy()
 
 if __name__ == "__main__":
-    Notifier().notify()
+    warn_about_deluge()
 
