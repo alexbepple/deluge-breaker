@@ -1,0 +1,4 @@
+#!/bin/sh
+
+dbus-send --system --type=signal /org/freedesktop/NetworkManager org.freedesktop.NetworkManager.StateChanged uint32:3
+
