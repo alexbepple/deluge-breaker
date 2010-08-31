@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+import os.path
+src_dir = os.path.dirname(__file__)
+ve_activator=os.path.join(src_dir, '../bin/activate_this.py')
+execfile(ve_activator, dict(__file__=ve_activator))
+
 import deluge
 import network
 import notifier
