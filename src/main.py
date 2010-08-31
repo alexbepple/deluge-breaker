@@ -9,15 +9,14 @@ def activate_virtualenv():
 activate_virtualenv()
 
 import deluge
-import network
-import notifier
+from delugebreaker import DelugeBreaker
 import networkobserver
 
-def notify_if_deluge_needs_halting():
-    if deluge.is_running() and network.is_dangerous():
-        notifier.warn_about_deluge()
+def use_deluge_breaker():
+    if deluge.is_running():
+        DelugeBreaker().act()
 
 if __name__ == "__main__":
-    networkobserver.when_network_becomes_available(notify_if_deluge_needs_halting)
+    networkobserver.when_network_becomes_available(use_deluge_breaker)
     networkobserver.start()
 

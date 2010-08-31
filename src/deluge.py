@@ -7,5 +7,8 @@ def is_running():
     def is_deluge(cmdline): return "/usr/bin/deluge-gtk" in cmdline
     return filter(is_deluge, processes)
 
+def halt():
+    pass
+
 if __name__ == "__main__":
     if is_running(): print "Beware the deluge." 

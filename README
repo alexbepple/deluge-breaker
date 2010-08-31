@@ -1,0 +1,20 @@
+
+Running:
+./src/main.py
+
+Runtime dependencies:
+virtualenv
+psutil
+pythonwifi
+
+Development dependencies:
+nose
+mockito (already in dev-req)
+
+Continuous testing:
+watchr
+rudolf (nose plugin)
+
+Continuously run tests:
+watchr unit.tests
+
