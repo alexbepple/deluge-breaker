@@ -3,10 +3,10 @@
 import pygtk
 import gtk
 
-def warn_about_deluge():
+def deluge_paused():
     dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK)
     dialog.set_title("Deluge Breaker")
-    dialog.set_markup("Beware the deluge!")
+    dialog.set_markup("We are safe from the Deluge for now.")
 
     theme = gtk.icon_theme_get_default()
     icon = theme.load_icon("deluge", 16, 0)

@@ -10,20 +10,20 @@ from delugebreaker import DelugeBreaker
 class DelugeBreaker_Test:
 
     def setUp(self):
-        delugebreaker.deluge = mock()
+        delugebreaker.delugedriver = mock()
         delugebreaker.network = mock()
         delugebreaker.notifier = mock()
 
     @istest
-    def halts_the_deluge_when_network_is_dangerous(self):
+    def pauses_the_deluge_when_network_is_dangerous(self):
         when(delugebreaker.network).is_dangerous().thenReturn(True)
         DelugeBreaker().act()
-        verify(delugebreaker.deluge).halt()
-        verify(delugebreaker.notifier).warn_about_deluge()
+        verify(delugebreaker.delugedriver).pause()
+        verify(delugebreaker.notifier).deluge_paused()
 
     @istest
     def does_not_halt_the_deluge_when_network_safe(self):
         when(delugebreaker.network).is_dangerous().thenReturn(False)
         DelugeBreaker().act()
-        verifyNoMoreInteractions(delugebreaker.deluge)
+        verifyNoMoreInteractions(delugebreaker.delugedriver)
         verifyNoMoreInteractions(delugebreaker.notifier)

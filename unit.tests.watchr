@@ -8,4 +8,4 @@ def run_all_unit_tests()
     nose("tests/unit")
 end
 
-watch('.*\.py') {|match| run_all_unit_tests()}
+watch('.*\.py') {run_all_unit_tests()}

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import deluge
+import delugedriver
 import network
 import notifier
 
@@ -8,5 +8,5 @@ class DelugeBreaker:
 
     def act(self):
         if network.is_dangerous():
-            deluge.halt()
-            notifier.warn_about_deluge()
+            delugedriver.pause()
+            notifier.deluge_paused()

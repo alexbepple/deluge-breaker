@@ -8,7 +8,7 @@ def activate_virtualenv():
 
 activate_virtualenv()
 
-import deluge
+import delugedriver as deluge
 from delugebreaker import DelugeBreaker
 import networkobserver
 
