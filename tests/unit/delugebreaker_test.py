@@ -24,8 +24,8 @@ class DelugeBreaker_Test:
         verify(self.notifier).deluge_paused()
 
     @istest
-    def does_not_halt_the_deluge_when_network_safe(self):
+    def resumes_the_deluge_when_network_safe(self):
         when(self.network).is_safe_for_p2p().thenReturn(True)
         self.breaker.act()
-        verifyNoMoreInteractions(self.driver)
-        verifyNoMoreInteractions(self.notifier)
+        verify(self.driver).resume()
+        verify(self.notifier).deluge_resumed()
