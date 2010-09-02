@@ -10,20 +10,22 @@ from delugebreaker import DelugeBreaker
 class DelugeBreaker_Test:
 
     def setUp(self):
-        delugebreaker.delugedriver = mock()
-        delugebreaker.network = mock()
+        self.driver = mock()
+        self.network = mock()
         delugebreaker.notifier = mock()
+        self.notifier = delugebreaker.notifier
+        self.breaker = DelugeBreaker(self.network, self.driver, self.notifier)
 
     @istest
     def pauses_the_deluge_when_network_is_not_safe(self):
-        when(delugebreaker.network).is_safe_for_p2p().thenReturn(False)
-        DelugeBreaker().act()
-        verify(delugebreaker.delugedriver).pause()
-        verify(delugebreaker.notifier).deluge_paused()
+        when(self.network).is_safe_for_p2p().thenReturn(False)
+        self.breaker.act()
+        verify(self.driver).pause()
+        verify(self.notifier).deluge_paused()
 
     @istest
     def does_not_halt_the_deluge_when_network_safe(self):
-        when(delugebreaker.network).is_safe_for_p2p().thenReturn(True)
-        DelugeBreaker().act()
-        verifyNoMoreInteractions(delugebreaker.delugedriver)
-        verifyNoMoreInteractions(delugebreaker.notifier)
+        when(self.network).is_safe_for_p2p().thenReturn(True)
+        self.breaker.act()
+        verifyNoMoreInteractions(self.driver)
+        verifyNoMoreInteractions(self.notifier)
