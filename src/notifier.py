@@ -15,6 +15,3 @@ def deluge_paused():
     dialog.run()
     dialog.destroy()
 
-if __name__ == "__main__":
-    warn_about_deluge()
-

@@ -30,5 +30,3 @@ def pause():
     d.addErrback(on_connect_fail)
     reactor.run()
 
-if __name__ == "__main__":
-    if is_running(): print "Beware the deluge." 

@@ -28,5 +28,3 @@ def is_wifi_safe_for_p2p():
 def is_safe_for_p2p():
     return is_wifi_available() and is_wifi_safe_for_p2p()
 
-if __name__ == "__main__":
-    if is_dangerous(): print "Network is dangerous."
