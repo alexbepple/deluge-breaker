@@ -14,9 +14,11 @@ import networkobserver
 import network
 import notifier
 
+deluge_breaker = DelugeBreaker(network, deluge, notifier)
+
 def use_deluge_breaker():
     if deluge.is_running():
-        DelugeBreaker(network, deluge, notifier).act()
+        deluge_breaker.act()
 
 if __name__ == "__main__":
     networkobserver.when_network_becomes_available(use_deluge_breaker)
