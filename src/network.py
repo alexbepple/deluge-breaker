@@ -22,11 +22,11 @@ def is_wifi_available():
 
 from pythonwifi.iwlibs import Wireless
 
-def wifi_is_safe_for_p2p():
+def is_wifi_safe_for_p2p():
     return '00:1F:3F:1A:11:21' == Wireless('wlan0').getAPaddr()
 
-def is_dangerous():
-    return is_wifi_available() and not wifi_is_safe_for_p2p()
+def is_safe_for_p2p():
+    return is_wifi_available() and is_wifi_safe_for_p2p()
 
 if __name__ == "__main__":
     if is_dangerous(): print "Network is dangerous."

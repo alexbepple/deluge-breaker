@@ -15,15 +15,15 @@ class DelugeBreaker_Test:
         delugebreaker.notifier = mock()
 
     @istest
-    def pauses_the_deluge_when_network_is_dangerous(self):
-        when(delugebreaker.network).is_dangerous().thenReturn(True)
+    def pauses_the_deluge_when_network_is_not_safe(self):
+        when(delugebreaker.network).is_safe_for_p2p().thenReturn(False)
         DelugeBreaker().act()
         verify(delugebreaker.delugedriver).pause()
         verify(delugebreaker.notifier).deluge_paused()
 
     @istest
     def does_not_halt_the_deluge_when_network_safe(self):
-        when(delugebreaker.network).is_dangerous().thenReturn(False)
+        when(delugebreaker.network).is_safe_for_p2p().thenReturn(True)
         DelugeBreaker().act()
         verifyNoMoreInteractions(delugebreaker.delugedriver)
         verifyNoMoreInteractions(delugebreaker.notifier)

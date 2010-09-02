@@ -7,6 +7,6 @@ import notifier
 class DelugeBreaker:
 
     def act(self):
-        if network.is_dangerous():
+        if not network.is_safe_for_p2p():
             delugedriver.pause()
             notifier.deluge_paused()
