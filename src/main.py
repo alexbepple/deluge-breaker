@@ -14,7 +14,7 @@ import networkobserver
 import network
 import notifier
 
-deluge_breaker = DelugeBreaker(network, deluge, notifier)
+deluge_breaker = DelugeBreaker(network, deluge, notifier.notifyosd)
 
 def use_deluge_breaker():
     if deluge.is_running():
