@@ -12,7 +12,7 @@ class DelugeBreaker:
         self.when_next_paused(self.pause_deluge)
 
     def act(self):
-        self.policies[self.network.is_safe_for_p2p()]()
+        self.policies[self.network.is_safe()]()
 
     def do_nothing(self):
         pass

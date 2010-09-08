@@ -25,12 +25,12 @@ def is_wifi_available():
 
 from pythonwifi.iwlibs import Wireless
 
-def is_wifi_safe_for_p2p():
+def is_wifi_safe():
     ap_mac = Wireless('wlan0').getAPaddr()
     is_safe = '00:1F:3F:1A:11:21' == ap_mac
     logging.info("Is current wifi is safe for P2P? {0}".format(is_safe))
     return is_safe
 
-def is_safe_for_p2p():
-    return is_wifi_available() and is_wifi_safe_for_p2p()
+def is_safe():
+    return is_wifi_available() and is_wifi_safe()
 
