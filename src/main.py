@@ -8,6 +8,9 @@ def activate_virtualenv():
 
 activate_virtualenv()
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
 import delugedriver as deluge
 from delugebreaker import DelugeBreaker
 import networkobserver

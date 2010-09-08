@@ -13,15 +13,18 @@ setupLogger()
 
 from deluge.ui.client import client
 from twisted.internet import reactor
+import logging
 
 def pause():
     def pause_all_torrents():
         return client.core.pause_all_torrents()
+    logging.info("Telling Deluge to pause all torrents.")
     tell_deluge_to(pause_all_torrents)
 
 def resume():
     def resume_all_torrents():
         return client.core.resume_all_torrents()
+    logging.info("Telling Deluge to resume all torrents.")
     tell_deluge_to(resume_all_torrents)
 
 
