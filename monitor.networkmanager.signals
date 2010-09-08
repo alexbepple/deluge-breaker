@@ -1,3 +1,4 @@
 #!/bin/sh
 
-dbus-monitor --system "interface='org.freedesktop.NetworkManager'"
+dbus-monitor --system "interface='org.freedesktop.NetworkManager',member='PropertiesChanged'"
+
