@@ -4,7 +4,7 @@ import psutil
 
 def is_running():
     processes = [process.cmdline for process in psutil.process_iter()]
-    def is_deluge(cmdline): return "/usr/bin/deluge-gtk" in cmdline
+    def is_deluge(cmdline): return "/usr/bin/deluged" in cmdline
     return filter(is_deluge, processes)
 
 
